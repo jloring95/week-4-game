@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Bootstrap 101 Template</title>
+  <!-- Added link to the jQuery Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- <link rel="stylesheet" type="text/css" href="assets/css/reset.css"> -->
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <!-- Bootstrap CDN -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="main-container">
+      <div class="row">
+        <div class="col-md-5">
+          <div class="panel panel-default">
+            <div class="panel-body main" >
+              <h1>
+                CrystalsCollector!
+              </h1>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-8">
+          <div class="panel panel-default">
+            <div class="panel-body main" >
+              <p id="fontBod">
+              You will be given a random number at the start of the game.
+              </p>
+              <p id="fontBod">
+              There are four crystals bellow. By clicking on a crystal you will add a specific amount of points to your total score.
+              </p>
+              <p id="fontBod">
+              You win the game by mathcing your total score to the random number, you lose the game if your total score goes above the random number.
+              </p>                       
+              <p id="fontBod">
+              The value of each crystal is hidden from you until you click on it.
+              </p>
+              <p id="fontBod">
+              Each time when the game starts, the game will change the values of each crystal.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="panel panel-default">
+            <div class="panel-body main" >
+                <h1 id="score"></h1>
+              <div class="row">
+                <div class="col-md-12">
+                  <br><br>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <h2 id="fontH1">Wins: <p id="wins"></p></h2>
+              <h2 id="fontH1">Losses: <p id="loss"></p></h2>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-8">
+          <div class="panel panel-default">
+            <div class="panel-body main" >
+              <div class="row">
+                <div class="col-md-3">
+                  <button id="button-1" class="btn btn-primary number" value="1">
+                    <img src="assets/images/shape1.png" alt="GitHub Logo" class="logo-image">
+                  </button>
+                </div>
+                <div class="col-md-3">
+                  <button id="button-2" class="btn btn-primary number" value="2">
+                    <img src="assets/images/shape2.png" alt="GitHub Logo" class="logo-image">
+                  </button>
+                </div>
+                <div class="col-md-3">
+                  <button id="button-3" class="btn btn-primary number" value="3">
+                    <img src="assets/images/shape3.png" alt="GitHub Logo" class="logo-image">
+                  </button>
+                </div>
+                <div class="col-md-3">
+                  <button id="button-4" class="btn btn-primary number" value="4">
+                    <img src="assets/images/shape4.png" alt="GitHub Logo" class="logo-image">
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="panel panel-default">
+            <div class="panel-body main" >
+              <p id="fontBod">
+                Your total score is: 
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="panel panel-default">
+            <div class="panel-body main" >
+              <h1 id="scoreSum"></h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- jQuery CDN -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+  <!-- Bootstrap JavaScript CDN -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
+
+
+  <script type="text/javascript">
+
+    $(document).ready(function() {
+
+      function rand(num){
+            var num = Math.floor(Math.random() * 50) + 20;
+            return num;
+      }function rand2(num){
+            var num = Math.floor(Math.random() * 7) + 1;
+            return num;
+      }
+
+      var score1 = rand();
+
+      var num1 = rand2();
+      var num2 = rand2();
+      var num3 = rand2();
+      var num4 = rand2();
+
+      var wins = 0;
+      var losses = 0;
+      var totScore = 0;
+
+
+
+      function start(){
+          $("#score").html(score1);
+          $("#wins").html(wins);
+          $("#loss").html(losses);
+          
+      }
+      start();
+      $("#scoreSum").text(totScore);
+
+        
+        
+        $("#button-1").on("click", function() {
+          totScore += num1
+          $("#scoreSum").html(totScore);
+          scoreSum.value = totScore;
+        });
+        $("#button-2").on("click", function() {
+          totScore += num2
+          $("#scoreSum").html(totScore);
+          scoreSum.value = totScore;
+        });
+        $("#button-3").on("click", function() {
+          totScore += num3
+          $("#scoreSum").html(totScore);
+          scoreSum.value = totScore;
+        });
+        $("#button-4").on("click", function() {
+          totScore += num4
+          $("#scoreSum").html(totScore);
+          scoreSum.value = totScore;
+        });
+        var score2 = document.getElementById('scoreSum').value;
+        
+        if (score2 == score1){
+          wins++
+          start();
+        } else  if(score2 > score1){
+          losses++
+          start();
+        }
+
+
+
+
+    });
+
+  </script>
+
+</body>
+
+</html>
