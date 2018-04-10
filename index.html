@@ -128,7 +128,7 @@
         <div class="col-md-4">
           <div class="panel panel-default">
             <div class="panel-body main" >
-              <h1 id="scoreSum"></h1>
+              <h1 id="scoreSum" value="0"></h1>
             </div>
           </div>
         </div>
@@ -160,10 +160,10 @@
 
       var score1 = rand();
 
-      var num1 = rand2();
-      var num2 = rand2();
-      var num3 = rand2();
-      var num4 = rand2();
+      var num1;
+      var num2;
+      var num3;
+      var num4;
 
       var wins = 0;
       var losses = 0;
@@ -172,50 +172,71 @@
 
 
       function start(){
+          score1 = rand();
+          num1 = rand2();
+          num2 = rand2();
+          num3 = rand2();
+          num4 = rand2();
+          totScore = 0;
           $("#score").html(score1);
           $("#wins").html(wins);
           $("#loss").html(losses);
-          
+          $("#scoreSum").text(totScore);
       }
       start();
-      $("#scoreSum").text(totScore);
 
-        
-        
+    
         $("#button-1").on("click", function() {
-          totScore += num1
-          $("#scoreSum").html(totScore);
-          scoreSum.value = totScore;
+          if (Number(totScore) < Number(score1)){
+            totScore += num1;
+            $("#scoreSum").text(totScore);
+          } else if (Number(totScore) == Number(score1)){
+            wins++
+            start();
+          } else  if(Number(totScore) > Number(score1)){
+            losses++
+            start();
+          }
         });
         $("#button-2").on("click", function() {
-          totScore += num2
-          $("#scoreSum").html(totScore);
-          scoreSum.value = totScore;
+          if (Number(totScore) < Number(score1)){
+            totScore += num2;
+            $("#scoreSum").text(totScore);
+          } else if (Number(totScore) == Number(score1)){
+            wins++
+            start();
+          } else  if(Number(totScore) > Number(score1)){
+            losses++
+            start();
+          }
         });
         $("#button-3").on("click", function() {
-          totScore += num3
-          $("#scoreSum").html(totScore);
-          scoreSum.value = totScore;
+          if (Number(totScore) < Number(score1)){
+            totScore += num3;
+            $("#scoreSum").text(totScore);
+          } else if (Number(totScore) == Number(score1)){
+            wins++
+            start();
+          } else  if(Number(totScore) > Number(score1)){
+            losses++
+            start();
+          }
         });
         $("#button-4").on("click", function() {
-          totScore += num4
-          $("#scoreSum").html(totScore);
-          scoreSum.value = totScore;
+          if (Number(totScore) < Number(score1)){
+            totScore += num1;
+            $("#scoreSum").text(totScore);
+          } else if (Number(totScore) == Number(score1)){
+            wins++
+            start();
+          } else  if(Number(totScore) > Number(score1)){
+            losses++
+            start();
+          }
         });
-        var score2 = document.getElementById('scoreSum').value;
-        
-        if (score2 == score1){
-          wins++
-          start();
-        } else  if(score2 > score1){
-          losses++
-          start();
-        }
-
-
-
 
     });
+
 
   </script>
 
